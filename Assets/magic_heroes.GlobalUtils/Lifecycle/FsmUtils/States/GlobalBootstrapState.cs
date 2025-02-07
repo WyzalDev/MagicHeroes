@@ -1,4 +1,4 @@
-﻿namespace magic_heroes.GlobalUtils.Lifecycle.Fsm.States
+﻿namespace magic_heroes.GlobalUtils.Lifecycle.FsmUtils.States
 {
     public class GlobalBootstrapState : FsmState
     {

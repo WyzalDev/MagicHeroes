@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace magic_heroes.GlobalUtils.Lifecycle.Fsm
+namespace magic_heroes.GlobalUtils.Lifecycle.FsmUtils
 {
     public class LifecycleMono : MonoBehaviour
     {

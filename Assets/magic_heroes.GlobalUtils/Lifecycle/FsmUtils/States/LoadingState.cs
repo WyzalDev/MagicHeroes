@@ -1,7 +1,7 @@
 ﻿using magic_heroes.Client.Develop.SceneManagement;
 using UnityEngine.SceneManagement;
 
-namespace magic_heroes.GlobalUtils.Lifecycle.Fsm.States
+namespace magic_heroes.GlobalUtils.Lifecycle.FsmUtils.States
 {
     public class LoadingState : FsmState
     {

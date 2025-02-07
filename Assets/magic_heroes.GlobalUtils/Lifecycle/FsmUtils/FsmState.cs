@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace magic_heroes.GlobalUtils.Lifecycle.Fsm
+namespace magic_heroes.GlobalUtils.Lifecycle.FsmUtils
 {
     public abstract class FsmState
     {
