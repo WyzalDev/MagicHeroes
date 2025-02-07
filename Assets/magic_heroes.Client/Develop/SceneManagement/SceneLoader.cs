@@ -1,0 +1,81 @@
+﻿using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+namespace magic_heroes.Client.Develop.SceneManagement
+{
+    public class SceneLoader : MonoBehaviour
+    {
+        public static SceneLoader instance { get; private set; }
+
+        [Header("UI Elements")] [SerializeField]
+        private GameObject loadingScreen;
+
+        [SerializeField] private Image progressBar;
+
+        private readonly Task _reloadingSceneTask = new Task(() => SceneManager.LoadSceneAsync(SceneName.Empty.ToString()));
+
+        private void Awake()
+        {
+            if (instance is null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        public async void LoadScene(SceneName sceneName)
+        {
+            //if current scene name is equals to sceneName then its reloading scene instead of loading
+            if (GetActiveSceneName().Equals(sceneName.ToString()))
+            {
+                if (!loadingScreen.activeSelf)
+                    loadingScreen.SetActive(true);
+                await _reloadingSceneTask;
+            }
+
+            //load scene
+            var scene = SceneManager.LoadSceneAsync(sceneName.ToString());
+            if (scene is not null)
+            {
+                scene.allowSceneActivation = false;
+            }
+            else
+            {
+                Debug.LogWarning("Scene " + sceneName + " is not loaded");
+                return;
+            }
+
+            if (!loadingScreen.activeSelf)
+                loadingScreen.SetActive(true);
+
+            //loading scene progress
+            do
+            {
+                await Task.Delay(100);
+                progressBar.fillAmount = scene.progress;
+            } while (scene.progress < 0.9f);
+
+            //TODO delete line under
+            await Task.Delay(1000);
+
+            scene.allowSceneActivation = true;
+            loadingScreen.SetActive(false);
+        }
+
+        public static string GetActiveSceneName() => SceneManager.GetActiveScene().name;
+
+        //name each scene same as scene existing in project
+        public enum SceneName
+        {
+            Bootstrap,
+            Empty,
+            Battle
+        }
+    }
+}
