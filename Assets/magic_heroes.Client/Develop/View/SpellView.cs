@@ -6,13 +6,18 @@ namespace magic_heroes.Client.Develop.View
 {
     public class SpellView : MonoBehaviour
     {
-        public int id { get; private set; }
-
-        public void Construct(int _id, Sprite _icon)
+        public int order { get; set; }
+        
+        private Sprite _icon;
+        
+        public Sprite sprite
         {
-            id = _id;
-            GetComponentInChildren<Image>().sprite = _icon;
+            get => _icon;
+            set
+            {
+                _icon = value;
+                GetComponentInChildren<Image>().sprite = value;
+            }
         }
-
     }
 }

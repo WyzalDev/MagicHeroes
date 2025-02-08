@@ -1,5 +1,6 @@
-﻿using magic_heroes.Client.Develop.Character;
+﻿using magic_heroes.Client.Develop.View;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace magic_heroes.Client.Infrastructure.Installers
@@ -15,11 +16,16 @@ namespace magic_heroes.Client.Infrastructure.Installers
         public override void InstallBindings()
         {
             var opponentInstance = Container
-                .InstantiatePrefabForComponent<OpponentMarker>(opponentPrefab, spawnPoint.position,
+                .InstantiatePrefabForComponent<OpponentView>(opponentPrefab, spawnPoint.position,
                     Quaternion.Euler(0,180,0), null);
-            
+
+            opponentInstance.CharacterInfo = new Develop.View.CharacterInfo()
+            {
+                hpBar = opponentInstance.GetComponentInChildren<Image>().GetComponentsInChildren<Image>()[1]
+            };
+
             Container
-                .Bind<OpponentMarker>()
+                .Bind<OpponentView>()
                 .FromInstance(opponentInstance)
                 .AsSingle();
             Debug.Log($"Instantiated OpponentMarker");

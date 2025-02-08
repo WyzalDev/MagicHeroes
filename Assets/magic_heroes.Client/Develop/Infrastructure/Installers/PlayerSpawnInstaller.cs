@@ -1,5 +1,6 @@
-﻿using magic_heroes.Client.Develop.Character;
+﻿using magic_heroes.Client.Develop.View;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace magic_heroes.Client.Infrastructure.Installers
@@ -12,11 +13,16 @@ namespace magic_heroes.Client.Infrastructure.Installers
         public override void InstallBindings()
         {
             var playerInstance = Container
-                .InstantiatePrefabForComponent<PlayerMarker>(playerPrefab, spawnPoint.position,
+                .InstantiatePrefabForComponent<PlayerView>(playerPrefab, spawnPoint.position,
                     Quaternion.identity, null);
-            
+
+            playerInstance.CharacterInfo = new Develop.View.CharacterInfo()
+            {
+                hpBar = playerInstance.GetComponentInChildren<Image>().GetComponentsInChildren<Image>()[1]
+            };
+
             Container
-                .Bind<PlayerMarker>()
+                .Bind<PlayerView>()
                 .FromInstance(playerInstance)
                 .AsSingle();
             Debug.Log("Instantiated PlayerMarker");
