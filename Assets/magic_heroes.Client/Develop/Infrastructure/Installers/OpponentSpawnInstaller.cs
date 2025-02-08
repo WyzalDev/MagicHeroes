@@ -22,6 +22,7 @@ namespace magic_heroes.Client.Infrastructure.Installers
                 .Bind<OpponentMarker>()
                 .FromInstance(opponentInstance)
                 .AsSingle();
+            Debug.Log($"Instantiated OpponentMarker");
         }
     }
 }

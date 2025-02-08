@@ -19,7 +19,7 @@ namespace magic_heroes.Client.Infrastructure.Installers
                 .Bind<PlayerMarker>()
                 .FromInstance(playerInstance)
                 .AsSingle();
-            
+            Debug.Log("Instantiated PlayerMarker");
         }
     }
 }
