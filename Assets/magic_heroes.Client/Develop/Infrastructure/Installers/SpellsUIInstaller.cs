@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using magic_heroes.Client.Develop.View;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace magic_heroes.Client.Infrastructure.Installers
@@ -22,7 +23,8 @@ namespace magic_heroes.Client.Infrastructure.Installers
             {
                 var spellInstance =
                     Container.InstantiatePrefabForComponent<SpellView>(_spellPrefab, _spellsParentCanvases[i].transform);
-                spellInstance.Construct(i, _spellSprites[i]);
+                spellInstance.sprite = _spellSprites[i];
+                spellInstance.order = i;
             }
             
             Debug.Log($"Instantiated {SPELL_COUNT} spells");
