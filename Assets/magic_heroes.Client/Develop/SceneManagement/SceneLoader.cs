@@ -61,9 +61,6 @@ namespace magic_heroes.Client.Develop.SceneManagement
                 progressBar.fillAmount = scene.progress;
             } while (scene.progress < 0.9f);
 
-            //TODO delete line under
-            await Task.Delay(1000);
-
             scene.allowSceneActivation = true;
             loadingScreen.SetActive(false);
         }
