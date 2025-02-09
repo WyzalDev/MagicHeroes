@@ -1,0 +1,32 @@
+﻿using System.Collections.Generic;
+using magic_heroes.GlobalUtils;
+using magic_heroes.GlobalUtils.ClientConnection;
+using magic_heroes.GlobalUtils.HttpApi;
+using magic_heroes.GlobalUtils.Lifecycle.FsmUtils.States;
+using UnityEngine;
+
+namespace magic_heroes.Client.Presenter
+{
+    public class ResetPresenter
+    {
+        private const string MessageHandlerName = "Reset";
+        
+        private readonly Dictionary<string,string> _emptyDictionary = new Dictionary<string,string>();
+        
+        public void SendResetRequest()
+        {
+            var request = new Request()
+            {
+                name = MessageHandlerName,
+                fields = _emptyDictionary
+            };
+            var response = ClientServerAdapter.Instance.SendRequest(request);
+            Debug.Log($"Response came back, status = {response.status}, Fields = {response.fields.ToDebugString()}");
+
+            if (response.status == 200)
+            {
+                GameplayState.ResetHitted = true;
+            }
+        }
+    }
+}

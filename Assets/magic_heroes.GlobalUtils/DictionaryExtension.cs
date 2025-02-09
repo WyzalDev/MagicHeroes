@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace magic_heroes.GlobalUtils
 {
@@ -7,7 +8,10 @@ namespace magic_heroes.GlobalUtils
     {
         public static string ToDebugString<TKey, TValue>(this IDictionary<TKey, TValue> dictionary)
         {
-            return "{" + string.Join(",", dictionary.Select(kv => kv.Key + "=" + kv.Value).ToArray()) + "}";
+            return new StringBuilder()
+                .Append("{")
+                .Append(string.Join(",", dictionary.Select(kv => kv.Key + "=" + kv.Value).ToArray()))
+                .Append("}").ToString();
         }
     }
 }
