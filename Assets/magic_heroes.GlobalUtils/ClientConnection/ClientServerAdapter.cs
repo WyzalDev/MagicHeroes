@@ -25,7 +25,7 @@ namespace magic_heroes.GlobalUtils.ClientConnection
 
         public Response SendRequest(Request request)
         {
-            Debug.Log($"MsgHandler name = {request.name}, Field = {request.fields.ToDebugString()}");
+            Debug.Log($"MsgHandler name = {request.name}, Fields = {request.fields.ToDebugString()}");
             return new Response()
             {
                 status = 200,

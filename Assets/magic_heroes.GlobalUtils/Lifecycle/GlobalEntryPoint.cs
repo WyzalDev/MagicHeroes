@@ -7,9 +7,9 @@ namespace magic_heroes.GlobalUtils.Lifecycle
 {
     public class GlobalEntryPoint : MonoBehaviour
     {
-        private const String LIFECYCLE_PREFAB_NAME = "LifecycleObject";
-        private const String SCENE_LOADER_PREFAB_NAME = "SceneLoader";
-        private const String CAMERA_PREFAB_NAME = "Camera";
+        private const string LIFECYCLE_PREFAB_NAME = "LifecycleObject";
+        private const string SCENE_LOADER_PREFAB_NAME = "SceneLoader";
+        private const string CAMERA_PREFAB_NAME = "Camera";
 
         private GameObject _lifecycleMonoPrefab;
         private GameObject _sceneLoaderPrefab;
