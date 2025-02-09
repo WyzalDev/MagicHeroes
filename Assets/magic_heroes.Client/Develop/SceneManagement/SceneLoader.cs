@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace magic_heroes.Client.Develop.SceneManagement
+namespace magic_heroes.Client.SceneManagement
 {
     public class SceneLoader : MonoBehaviour
     {

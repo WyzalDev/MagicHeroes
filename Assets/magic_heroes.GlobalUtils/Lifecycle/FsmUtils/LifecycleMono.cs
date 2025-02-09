@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace magic_heroes.GlobalUtils.Lifecycle.FsmUtils
 {

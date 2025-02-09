@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace magic_heroes.Client.Develop.View
+namespace magic_heroes.Client.View
 {
     public class SpellView : MonoBehaviour
     {

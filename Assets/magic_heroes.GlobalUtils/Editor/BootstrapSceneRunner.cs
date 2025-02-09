@@ -23,7 +23,7 @@ namespace magic_heroes.GlobalUtils.Editor
                 var currentSceneName = EditorApplication.currentScene;
                 File.WriteAllText(".lastScene", currentSceneName);
 
-                EditorApplication.OpenScene("Assets/magic_heroes.Client/Scenes/Bootstrap.unity");
+                EditorApplication.OpenScene("Assets/Scenes/Bootstrap.unity");
                 EditorApplication.isPlaying = true;
             }
         }

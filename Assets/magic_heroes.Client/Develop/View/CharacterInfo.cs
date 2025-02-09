@@ -1,6 +1,7 @@
-﻿using UnityEngine.UI;
+﻿using System.Collections.Generic;
+using UnityEngine.UI;
 
-namespace magic_heroes.Client.Develop.View
+namespace magic_heroes.Client.View
 {
     public class CharacterInfo
     {
@@ -19,5 +20,7 @@ namespace magic_heroes.Client.Develop.View
             }
         }
         public Image hpBar { get; set; }
+
+        public List<ActiveEffect> currentActiveEffectsObjects { get; set; }
     }
 }
