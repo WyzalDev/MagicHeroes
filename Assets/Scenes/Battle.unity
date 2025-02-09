@@ -848,7 +848,6 @@ GameObject:
   - component: {fileID: 1269544382}
   - component: {fileID: 1269544381}
   - component: {fileID: 1269544383}
-  - component: {fileID: 1269544384}
   - component: {fileID: 1269544385}
   m_Layer: 0
   m_Name: SceneContext
@@ -872,7 +871,6 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 1269544383}
-  - {fileID: 1269544384}
   - {fileID: 1269544385}
   _installerPrefabs: []
   _autoRun: 1
@@ -918,24 +916,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187df6484b7c4dc0a5ef5dda66773eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 194789822}
+  playerSpawnPoint: {fileID: 194789822}
+  opponentSpawnPoint: {fileID: 1891738098}
   playerPrefab: {fileID: 3541754002163558908, guid: bd6ee82c5e06b3f4f86113cbf8261ae1,
     type: 3}
---- !u!114 &1269544384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1269544380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44ad4b534a6e443da3705a595f702bee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   opponentPrefab: {fileID: 129894571140877283, guid: 0953034caf9e2314399bf9df5c03f0c5,
     type: 3}
-  spawnPoint: {fileID: 1891738098}
+  activeEffectPrefab: {fileID: 8645434398002866944, guid: 248c216a21260de40aa7e71dda117952,
+    type: 3}
+  activeEffectIcons:
+  - {fileID: 21300000, guid: dd3885098198d104888439be4c590aba, type: 3}
+  - {fileID: 21300000, guid: c3aab7237df394c4890e647a4ae580ea, type: 3}
+  - {fileID: 21300000, guid: c46d83f2b73aaa141bd5015819342d81, type: 3}
+  activeEffectNames: 000000000100000002000000
 --- !u!114 &1269544385
 MonoBehaviour:
   m_ObjectHideFlags: 0

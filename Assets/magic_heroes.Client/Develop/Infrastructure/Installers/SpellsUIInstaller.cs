@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using magic_heroes.Client.Develop.View;
+using magic_heroes.Client.View;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 namespace magic_heroes.Client.Infrastructure.Installers

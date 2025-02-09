@@ -1,5 +1,4 @@
-﻿using magic_heroes.Client.Develop.SceneManagement;
-using UnityEngine.SceneManagement;
+﻿using magic_heroes.Client.SceneManagement;
 
 namespace magic_heroes.GlobalUtils.Lifecycle.FsmUtils.States
 {

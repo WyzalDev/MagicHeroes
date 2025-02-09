@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/magic_heroes.Client/Scenes/Bootstrap.unity
+    path: Assets/Scenes/Bootstrap.unity
     guid: 85e0114c723258c4f9b69bad2892e216
   - enabled: 1
-    path: Assets/magic_heroes.Client/Scenes/Battle.unity
+    path: Assets/Scenes/Battle.unity
     guid: 74e9e2599a31fe74ba4e58a7c7556823
   m_configObjects: {}
