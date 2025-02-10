@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace magic_heroes.GlobalUtils.Lifecycle.FsmUtils
 {
@@ -9,19 +10,7 @@ namespace magic_heroes.GlobalUtils.Lifecycle.FsmUtils
 
         private readonly Dictionary<string, FsmState> _states = new Dictionary<string, FsmState>();
 
-        public void AddState(Type type)
-        {
-            if (type is null || !typeof(FsmState).IsAssignableFrom(type)) return;
-            
-            //create object of concrete type derived from FsmState through reflection
-            var constructors = type.GetConstructors();
-            var args = new object[1];
-            args[0] = this;
-            var state = (FsmState)constructors[0]?.Invoke(args);
-            
-            if (state is not null)
-                _states.Add(state.Name, state);
-        }
+        public void AddState(FsmState state) => _states.Add(state.Name, state);
 
         public void SetState(string name)
         {
@@ -36,5 +25,6 @@ namespace magic_heroes.GlobalUtils.Lifecycle.FsmUtils
         public bool ContainsState(string name) => _states.ContainsKey(name);
 
         public void Update() => CurrentState?.Update();
+        
     }
 }
