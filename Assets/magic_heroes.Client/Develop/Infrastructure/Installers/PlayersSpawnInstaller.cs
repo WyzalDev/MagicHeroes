@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using magic_heroes.Client.Character;
 using magic_heroes.Client.View;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -34,7 +34,7 @@ namespace magic_heroes.Client.Infrastructure.Installers
             var playerActiveEffectGridLayoutTransform = playerInstance.GetComponentInChildren<GridLayoutGroup>().transform;
             
             //player CharacterInfo
-            playerInstance.CharacterInfo = new View.CharacterInfo()
+            playerInstance.CharacterData = new CharacterData()
             {
                 hpBar = playerInstance.GetComponentInChildren<Canvas>().GetComponentsInChildren<Image>()[1],
                 currentActiveEffectsObjects = InstantiateActiveEffects(playerActiveEffectGridLayoutTransform)
@@ -54,7 +54,7 @@ namespace magic_heroes.Client.Infrastructure.Installers
             var opponentActiveEffectGridLayoutTransform = opponentInstance.GetComponentInChildren<GridLayoutGroup>().transform;
             
             //opponent CharacterInfo
-            opponentInstance.CharacterInfo = new View.CharacterInfo()
+            opponentInstance.CharacterData = new CharacterData()
             {
                 hpBar = opponentInstance.GetComponentInChildren<Canvas>().GetComponentsInChildren<Image>()[1],
                 currentActiveEffectsObjects = InstantiateActiveEffects(opponentActiveEffectGridLayoutTransform)

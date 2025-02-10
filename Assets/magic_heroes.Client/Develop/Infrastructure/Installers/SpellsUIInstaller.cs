@@ -18,13 +18,17 @@ namespace magic_heroes.Client.Infrastructure.Installers
         public override void InstallBindings()
         {
             if (_spellsParentCanvases.Count < SPELL_COUNT || _spellSprites.Count < SPELL_COUNT) return;
+            var spellViews = new List<SpellView>();
             for (var i = 0; i < SPELL_COUNT; i++)
             {
                 var spellInstance =
                     Container.InstantiatePrefabForComponent<SpellView>(_spellPrefab, _spellsParentCanvases[i].transform);
                 spellInstance.sprite = _spellSprites[i];
                 spellInstance.order = i;
+                spellViews.Add(spellInstance);
             }
+            
+            Container.Bind<List<SpellView>>().FromInstance(spellViews).AsSingle();
             
             Debug.Log($"Instantiated {SPELL_COUNT} spells");
         }

@@ -31,9 +31,9 @@ namespace magic_heroes.GlobalUtils.Lifecycle
 
             //create lifecycle fsm, initialize LifeCycleMono, add states
             var lifecycleFsmInstance = new Fsm();
-            lifecycleFsmInstance.AddState(typeof(GlobalBootstrapState));
-            lifecycleFsmInstance.AddState(typeof(LoadingState));
-            lifecycleFsmInstance.AddState(typeof(GameplayState));
+            lifecycleFsmInstance.AddState(new GlobalBootstrapState(lifecycleFsmInstance));
+            lifecycleFsmInstance.AddState(new LoadingState(lifecycleFsmInstance));
+            lifecycleFsmInstance.AddState(new GameplayState(lifecycleFsmInstance));
             var lifecycleMono = Instantiate(_lifecycleMonoPrefab).GetComponent<LifecycleMono>();
             lifecycleMono.Construct(lifecycleFsmInstance);
 

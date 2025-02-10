@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace magic_heroes.Client.View
+namespace magic_heroes.Client.Character
 {
     public class ActiveEffect : MonoBehaviour
     {

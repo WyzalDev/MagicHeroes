@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine.UI;
 
-namespace magic_heroes.Client.View
+namespace magic_heroes.Client.Character
 {
-    public class CharacterInfo
+    public class CharacterData
     {
         public int MaxHealth;
         
