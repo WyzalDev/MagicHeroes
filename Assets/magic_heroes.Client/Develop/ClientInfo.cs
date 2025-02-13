@@ -8,6 +8,8 @@ namespace magic_heroes.Client
     {
         public UserDto user;
 
+        public ConnectionDto connection;
+        
         public long battleInGameId;
     }
 }

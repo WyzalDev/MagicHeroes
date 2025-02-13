@@ -23,7 +23,7 @@ namespace magic_heroes.Client.Infrastructure.States
         public override void Exit()
         {
             base.Exit();
-            Debug.Log("Game Started");
+            Debug.Log($"{fsm.FsmName}: Game Started");
         }
     }
 }

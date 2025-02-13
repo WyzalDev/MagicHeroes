@@ -8,5 +8,9 @@
         
         public const string USER = "user";
         
+        public const string CONNECTION = "connection";
+        
+        public const string EVENT_NAME = "event_name";
+        
     }
 }

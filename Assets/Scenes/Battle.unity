@@ -761,7 +761,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 255.8
+  m_fontSize: 245.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -895,7 +895,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 375.15
+  m_fontSize: 346.15
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1263,6 +1263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1269544382}
   - component: {fileID: 1269544381}
+  - component: {fileID: 1269544387}
   - component: {fileID: 1269544383}
   - component: {fileID: 1269544385}
   - component: {fileID: 1269544386}
@@ -1285,9 +1286,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scriptableObjectInstallers:
-  - {fileID: 11400000, guid: 53d90590fdef40d45b368b0ee2a41402, type: 2}
+  _scriptableObjectInstallers: []
   _monoInstallers:
+  - {fileID: 1269544387}
   - {fileID: 1269544383}
   - {fileID: 1269544385}
   - {fileID: 1269544386}
@@ -1388,6 +1389,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentTurnUIMark: {fileID: 1407894163}
   _battleLifecyclePrefab: {fileID: 7413858433167844744, guid: 0df0137c5259f584a848544723656008,
+    type: 3}
+--- !u!114 &1269544387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269544380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41cf03f2c5754f18b14d4ec83270ecc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allSceneUICanvas: {fileID: 185122249}
+  uiActivatorPrefab: {fileID: 4137498632813111971, guid: 9af259e6f29ca6648b05228d7fc7317f,
     type: 3}
 --- !u!1 &1400265055
 GameObject:
@@ -1848,13 +1864,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008420861}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.86602545, y: 0, z: 0, w: 0.49999994}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 120, y: 0, z: 0}
 --- !u!1 &2029304987
 GameObject:
   m_ObjectHideFlags: 0

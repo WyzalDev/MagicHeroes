@@ -45,11 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e6589720da476459dc6dd71624b071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
+  _scriptableObjectInstallers:
+  - {fileID: 11400000, guid: 53d90590fdef40d45b368b0ee2a41402, type: 2}
   _monoInstallers:
   - {fileID: 2020597704178026081}
   _installerPrefabs: []
-  _parentNewObjectsUnderContext: 1
+  _parentNewObjectsUnderContext: 0
   _editorReflectionBakingCoverageMode: 0
   _buildsReflectionBakingCoverageMode: 0
   _settings:
@@ -74,3 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc385c657b6ae314d9f79078a6bfe9fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  connectionLifecyclePrefab: {fileID: 2401935924694152936, guid: 2a98686c357e3294d95d57b9fbdbe584,
+    type: 3}
+  waitForConnectionUIPrefab: {fileID: 4448290910833740352, guid: cce18b023e6081346a16f6e543a3ac6b,
+    type: 3}

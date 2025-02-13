@@ -10,9 +10,9 @@ namespace magic_heroes.GlobalUtils.Lifecycle.FsmUtils
 
         public FsmState(Fsm fsm) => this.fsm = fsm;
 
-        public virtual void Enter() => Debug.Log($"Enter [{Name}] state");
+        public virtual void Enter() => Debug.Log($"{fsm.FsmName}: Enter [{Name}] state");
 
-        public virtual void Exit() => Debug.Log($"Exit [{Name}] state -> switching states");
+        public virtual void Exit() => Debug.Log($"{fsm.FsmName}: Exit [{Name}] state -> switching states");
 
         public virtual void Update() { }
 

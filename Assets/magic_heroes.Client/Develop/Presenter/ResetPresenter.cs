@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using magic_heroes.Client.UI;
 using magic_heroes.GlobalUtils;
 using magic_heroes.GlobalUtils.ClientConnection;
 using magic_heroes.GlobalUtils.HttpApi;
@@ -12,6 +13,13 @@ namespace magic_heroes.Client.Presenter
         private const string MessageHandlerName = "Reset";
         
         private readonly Dictionary<string,string> _emptyDictionary = new Dictionary<string,string>();
+
+        private WaitForConnectionUIMark _waitForConnectionUIMark;
+        
+        public ResetPresenter(WaitForConnectionUIMark waitForConnectionUIMark)
+        {
+            _waitForConnectionUIMark = waitForConnectionUIMark;
+        }
         
         public void SendResetRequest()
         {
@@ -21,7 +29,7 @@ namespace magic_heroes.Client.Presenter
                 fields = _emptyDictionary
             };
             var response = ClientServerAdapter.Instance.SendRequest(request);
-            Debug.Log($"Response came back, status = {response.status}, Fields = {response.fields.ToDebugString()}");
+            Debug.Log($"Response came back from {MessageHandlerName}, status = {response.status}, Fields = {response.fields.ToDebugString()}");
 
             if (response.status == 200)
             {

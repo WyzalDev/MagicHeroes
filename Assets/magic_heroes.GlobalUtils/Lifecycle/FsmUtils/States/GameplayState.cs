@@ -14,11 +14,11 @@ namespace magic_heroes.GlobalUtils.Lifecycle.FsmUtils.States
         public override void Update()
         {
             if (ResetHitted) Reset();
-        }
+        } 
 
         private void Reset()
         {
-            Debug.Log("Reset Hitted");
+            Debug.Log($"{fsm.FsmName}: Reset Started");
             ResetHitted = false;
             fsm.SetState(LoadingState.STATE_NAME);
         }

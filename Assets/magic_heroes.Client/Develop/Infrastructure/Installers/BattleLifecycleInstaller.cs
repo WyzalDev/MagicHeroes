@@ -11,6 +11,8 @@ namespace magic_heroes.Client.Infrastructure.Installers
         [SerializeField] private CurrentTurnUIMark _currentTurnUIMark;
         [SerializeField] private GameObject _battleLifecyclePrefab;
         
+        private const string BATTLE_LIFECYCLE_FSM_NAME = "BattleLifecycleFSM";
+        
         public override void InstallBindings()
         {
             BindCurrentTurnUIMark();
@@ -19,23 +21,19 @@ namespace magic_heroes.Client.Infrastructure.Installers
 
         private void BindBattleLifecycleFSM()
         {
-            var battleLifecycleFSM = new Fsm();
+            var battleLifecycleFSM = new Fsm(BATTLE_LIFECYCLE_FSM_NAME);
             
-            Container.BindInstance(battleLifecycleFSM)
-                .AsSingle()
-                .NonLazy();
-            
-            battleLifecycleFSM.AddState(Container.Instantiate<EntryState>());
-            battleLifecycleFSM.AddState(Container.Instantiate<FirstPlayerTurnState>());
-            battleLifecycleFSM.AddState(Container.Instantiate<SecondPlayerTurnState>());
-            battleLifecycleFSM.AddState(Container.Instantiate<ExitState>());
+            battleLifecycleFSM.AddState(Container.Instantiate<EntryState>(new object[] { battleLifecycleFSM }));
+            battleLifecycleFSM.AddState(Container.Instantiate<FirstPlayerTurnState>(new object[] { battleLifecycleFSM }));
+            battleLifecycleFSM.AddState(Container.Instantiate<SecondPlayerTurnState>(new object[] { battleLifecycleFSM }));
+            battleLifecycleFSM.AddState(Container.Instantiate<ExitState>(new object[] { battleLifecycleFSM }));
 
             battleLifecycleFSM.SetState(EntryState.STATE_NAME);
             var battleLifecyclePrefabInstance = Container.InstantiatePrefabForComponent<LifecycleMono>(_battleLifecyclePrefab);
             battleLifecyclePrefabInstance.Construct(battleLifecycleFSM);
             
             //TODO when connection presenter is ready - delete
-            EntryState.GameStarted = true;
+            //EntryState.GameStarted = true;
         }
 
         private void BindCurrentTurnUIMark()

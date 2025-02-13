@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using magic_heroes.Client.Dto;
 using magic_heroes.GlobalUtils.HttpApi;
 using UnityEngine;
 
@@ -11,7 +12,12 @@ namespace magic_heroes.GlobalUtils.ClientConnection
 
         private static Dictionary<string, string> testFields = new Dictionary<string, string>()
         {
-            {"testfieldname", "testserializedvalue"}
+            {HttpAttributeNames.CONNECTION,
+                JsonUtility.ToJson(new ConnectionDto()
+            {
+                isConnected = true,
+                connectionId = 254325325
+            })}
         };
 
         public static ClientServerAdapter Instance
