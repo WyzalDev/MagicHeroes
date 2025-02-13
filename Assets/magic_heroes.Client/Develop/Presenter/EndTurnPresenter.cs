@@ -2,7 +2,7 @@
 using magic_heroes.Client.Dto;
 using magic_heroes.Client.Infrastructure.States;
 using magic_heroes.GlobalUtils;
-using magic_heroes.GlobalUtils.ClientConnection;
+using magic_heroes.GlobalUtils.GlobalConnection;
 using magic_heroes.GlobalUtils.HttpApi;
 using UnityEngine;
 

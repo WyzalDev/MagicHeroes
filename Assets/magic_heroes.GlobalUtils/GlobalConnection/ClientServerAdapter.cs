@@ -4,7 +4,7 @@ using magic_heroes.Client.Dto;
 using magic_heroes.GlobalUtils.HttpApi;
 using UnityEngine;
 
-namespace magic_heroes.GlobalUtils.ClientConnection
+namespace magic_heroes.GlobalUtils.GlobalConnection
 {
     public class ClientServerAdapter
     {
