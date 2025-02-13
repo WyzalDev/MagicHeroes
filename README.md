@@ -19,7 +19,7 @@ Project where 2 characters using spells turn by turn. Has some client-server sim
 - [Folder Structure](#folder-structure)
 
 ## Foreward
-Project dived by three folders that has Client, Server and GlobalUtils side. </br></br>
+Project divided by three folders that has Client, Server and GlobalUtils side. </br></br>
 In this project client-server simulation is used. That means that the client and server communicate through
 class named ClientServerAdapter with one method : Response sendRequest(Request request); </br></br>
 Also Response/Request classes are self-descriptive analog for HTTP Request/Response.
