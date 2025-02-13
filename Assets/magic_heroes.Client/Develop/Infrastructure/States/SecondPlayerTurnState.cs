@@ -32,7 +32,7 @@ namespace magic_heroes.Client.Infrastructure.States
                 if (spellView.gameObject.activeSelf) spellView.gameObject.SetActive(false);
             }
             _currentTurnUI.SetText(CURRENT_TURN_TEXT);
-            Debug.Log("Now is Second Player Turn");
+            Debug.Log($"{fsm.FsmName}: Now is Second Player Turn");
             
             //TODO delete when server ai player and EndTurnMessageHandler ready
             fsm.SetState(FirstPlayerTurnState.STATE_NAME);

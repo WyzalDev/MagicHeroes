@@ -12,13 +12,13 @@ namespace magic_heroes.Client.Presenter
     {
         private const string MessageHandlerName = "EndTurn";
 
-        public void SendEndTurnRequest(int spellOrder, UserDto user, long BattleInGameId)
+        public void SendEndTurnRequest(int spellOrder, UserDto user, long battleInGameId)
         {
             var fields = new Dictionary<string, string>
             {
                 { HttpAttributeNames.SPELL_ORDER, spellOrder.ToString() },
                 { HttpAttributeNames.USER, JsonUtility.ToJson(user) },
-                { HttpAttributeNames.BATTLE_INGAME_ID, BattleInGameId.ToString() }
+                { HttpAttributeNames.BATTLE_INGAME_ID, battleInGameId.ToString() }
             };
 
             var request = new Request()
@@ -28,7 +28,7 @@ namespace magic_heroes.Client.Presenter
             };
             
             var response = ClientServerAdapter.Instance.SendRequest(request);
-            Debug.Log($"Response came back, status = {response.status}, Fields = {response.fields.ToDebugString()}");
+            Debug.Log($"Response came back from {MessageHandlerName}, status = {response.status}, Fields = {response.fields.ToDebugString()}");
             
             if (response.status == 200)
             {

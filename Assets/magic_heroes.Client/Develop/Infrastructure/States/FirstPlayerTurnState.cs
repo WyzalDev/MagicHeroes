@@ -31,7 +31,7 @@ namespace magic_heroes.Client.Infrastructure.States
                 if (!spellView.gameObject.activeSelf) spellView.gameObject.SetActive(true);
             }
             _currentTurnUI.SetText(CURRENT_TURN_TEXT);
-            Debug.Log("Now is First Player Turn");
+            Debug.Log($"{fsm.FsmName}: Now is First Player Turn");
         }
 
         public override void Update()

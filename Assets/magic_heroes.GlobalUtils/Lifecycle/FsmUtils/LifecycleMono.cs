@@ -8,11 +8,6 @@ namespace magic_heroes.GlobalUtils.Lifecycle.FsmUtils
 
         public void Construct(Fsm fsm) => this.fsm = fsm;
 
-        private void Awake()
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-
         private void Update() => fsm.Update();
     }
 }
