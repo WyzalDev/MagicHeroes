@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using magic_heroes.Client.UI;
 using magic_heroes.GlobalUtils;
-using magic_heroes.GlobalUtils.ClientConnection;
+using magic_heroes.GlobalUtils.GlobalConnection;
 using magic_heroes.GlobalUtils.HttpApi;
 using magic_heroes.GlobalUtils.Lifecycle.FsmUtils.States;
 using UnityEngine;
