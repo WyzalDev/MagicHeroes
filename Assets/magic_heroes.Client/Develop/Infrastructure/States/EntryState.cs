@@ -9,15 +9,15 @@ namespace magic_heroes.Client.Infrastructure.States
         
         public static bool GameStarted = false;
 
+        public static bool isClientTurn = false;
+
         public EntryState(Fsm fsm) : base(fsm) => Name = STATE_NAME;
 
         public override void Update()
         {
-            if (GameStarted)
-            {
-                fsm.SetState(FirstPlayerTurnState.STATE_NAME);
-                GameStarted = false;
-            }
+            if (!GameStarted) return;
+            fsm.SetState(isClientTurn ? ClientPlayerTurnState.STATE_NAME : EnemyPlayerTurnState.STATE_NAME);
+            GameStarted = false;
         }
 
         public override void Exit()

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using magic_heroes.Client.Dto;
 using magic_heroes.Client.EventConnection;
+using magic_heroes.Client.Infrastructure.States;
 using magic_heroes.GlobalUtils;
 using magic_heroes.GlobalUtils.GlobalConnection;
 using magic_heroes.GlobalUtils.HttpApi;
@@ -46,10 +47,13 @@ namespace magic_heroes.Client.Presenter
             RewriteEventCheckRequestDictionary(null, user, battleInGameId);
             var response = ClientServerAdapter.Instance.SendRequest(_tryConnectRequest);
             Debug.Log($"Response came back from {ConnectMessageHandlerName}, status = {response.status}, Fields = {response.fields.ToDebugString()}");
-            if (response.status == 200 && response.fields.TryGetValue(HttpAttributeNames.CONNECTION, out var field))
+            if (response.status == 200 && response.fields.TryGetValue(HttpAttributeNames.CONNECTION, out var connection)
+                                       && response.fields.TryGetValue(HttpAttributeNames.USER,out var currentTurnUserJson))
             {
                 isConnected = true;
-                var connectionDto = JsonUtility.FromJson<ConnectionDto>(field);
+                var connectionDto = JsonUtility.FromJson<ConnectionDto>(connection);
+                var currentTurnUser = JsonUtility.FromJson<UserDto>(currentTurnUserJson);
+                EntryState.isClientTurn = currentTurnUser.id == user.id;
                 return connectionDto;
             }
             else

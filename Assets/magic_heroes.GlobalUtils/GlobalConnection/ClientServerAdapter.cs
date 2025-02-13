@@ -17,6 +17,11 @@ namespace magic_heroes.GlobalUtils.GlobalConnection
             {
                 isConnected = true,
                 connectionId = 254325325
+            })},
+            {HttpAttributeNames.USER, JsonUtility.ToJson(new UserDto()
+            {
+                id = 1,
+                name = "Client_User"
             })}
         };
 

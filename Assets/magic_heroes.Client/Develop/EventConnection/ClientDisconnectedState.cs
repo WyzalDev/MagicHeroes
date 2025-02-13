@@ -67,6 +67,7 @@ namespace magic_heroes.Client.EventConnection
             _clientInfo.connection.isConnected = connection.isConnected;
             _clientInfo.connection.connectionId = connection.connectionId;
             EntryState.GameStarted = true;
+            
 
             fsm.SetState(ClientConnectedState.STATE_NAME);
         }
