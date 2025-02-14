@@ -11,10 +11,6 @@ namespace magic_heroes.Client.Presenter
 {
     public class PollingConnectionPresenter : IConnectionPresenter
     {
-        private const string ConnectMessageHandlerName = "Connect";
-        
-        private const string EventCheckMessageHandlerName = "EventCheck";
-
         #region CACHED_INFO
         private readonly ConnectionDto _failedConnection = new ConnectionDto()
         {
@@ -24,13 +20,13 @@ namespace magic_heroes.Client.Presenter
         
         private Request _eventCheckRequest = new Request()
         {
-            name = EventCheckMessageHandlerName,
+            msgHandlerName = MessageHandlerNames.EventCheckMessageHandlerName,
             fields = new Dictionary<string, string>()
         };
         
         private Request _tryConnectRequest = new Request()
         {
-            name = ConnectMessageHandlerName,
+            msgHandlerName = MessageHandlerNames.ConnectMessageHandlerName,
             fields = new Dictionary<string, string>()
         };
         #endregion
@@ -46,7 +42,7 @@ namespace magic_heroes.Client.Presenter
         {
             RewriteEventCheckRequestDictionary(null, user, battleInGameId);
             var response = ClientServerAdapter.Instance.SendRequest(_tryConnectRequest);
-            Debug.Log($"Response came back from {ConnectMessageHandlerName}, status = {response.status}, Fields = {response.fields.ToDebugString()}");
+            Debug.Log($"Response came back from {MessageHandlerNames.ConnectMessageHandlerName}, status = {response.status}, Fields = {response.fields.ToDebugString()}");
             if (response.status == 200 && response.fields.TryGetValue(HttpAttributeNames.CONNECTION, out var connection)
                                        && response.fields.TryGetValue(HttpAttributeNames.USER,out var currentTurnUserJson))
             {
@@ -73,6 +69,7 @@ namespace magic_heroes.Client.Presenter
                 {
                     name = field
                 };
+                Debug.Log($"Event came back from {MessageHandlerNames.EventCheckMessageHandlerName}, event_name = {field}");
                 return incomingEvent;
             }
             else

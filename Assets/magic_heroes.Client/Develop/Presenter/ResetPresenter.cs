@@ -10,8 +10,6 @@ namespace magic_heroes.Client.Presenter
 {
     public class ResetPresenter
     {
-        private const string MessageHandlerName = "Reset";
-        
         private readonly Dictionary<string,string> _emptyDictionary = new Dictionary<string,string>();
 
         private WaitForConnectionUIMark _waitForConnectionUIMark;
@@ -25,11 +23,11 @@ namespace magic_heroes.Client.Presenter
         {
             var request = new Request()
             {
-                name = MessageHandlerName,
+                msgHandlerName = MessageHandlerNames.ResetMessageHandlerName,
                 fields = _emptyDictionary
             };
             var response = ClientServerAdapter.Instance.SendRequest(request);
-            Debug.Log($"Response came back from {MessageHandlerName}, status = {response.status}, Fields = {response.fields.ToDebugString()}");
+            Debug.Log($"Response came back from {MessageHandlerNames.ResetMessageHandlerName}, status = {response.status}, Fields = {response.fields.ToDebugString()}");
 
             if (response.status == 200)
             {

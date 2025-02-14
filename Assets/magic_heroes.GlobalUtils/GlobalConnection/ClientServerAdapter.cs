@@ -2,29 +2,18 @@
 using System.Collections.Generic;
 using magic_heroes.Client.Dto;
 using magic_heroes.GlobalUtils.HttpApi;
+using magic_heroes.Server.connection;
 using UnityEngine;
 
 namespace magic_heroes.GlobalUtils.GlobalConnection
 {
     public class ClientServerAdapter
     {
+        
+        
+        #region SINGLETON_CODE
         private static ClientServerAdapter _instance;
-
-        private static Dictionary<string, string> testFields = new Dictionary<string, string>()
-        {
-            {HttpAttributeNames.CONNECTION,
-                JsonUtility.ToJson(new ConnectionDto()
-            {
-                isConnected = true,
-                connectionId = 254325325
-            })},
-            {HttpAttributeNames.USER, JsonUtility.ToJson(new UserDto()
-            {
-                id = 1,
-                name = "Client_User"
-            })}
-        };
-
+        
         public static ClientServerAdapter Instance
         {
             get
@@ -33,15 +22,14 @@ namespace magic_heroes.GlobalUtils.GlobalConnection
                 return _instance;
             }
         }
+        #endregion
+
+        private static readonly MessageBroker MessageBrokerInstance = MessageBroker.Instance;
 
         public Response SendRequest(Request request)
         {
-            Debug.Log($"MsgHandler name = {request.name}, Fields = {request.fields.ToDebugString()}");
-            return new Response()
-            {
-                status = 200,
-                fields = testFields
-            };
+            Debug.Log($"MsgHandler name = {request.msgHandlerName}, Fields = {request.fields.ToDebugString()}");
+            return MessageBrokerInstance.GetResponse(request);
         }
     }
 }

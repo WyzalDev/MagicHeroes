@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace magic_heroes.Server.src.structure
+namespace magic_heroes.Server.structure
 {
     public class ServiceLocatorImpl : IServiceLocator
     {

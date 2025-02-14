@@ -1,4 +1,4 @@
-﻿namespace magic_heroes.Server.src.structure
+﻿namespace magic_heroes.Server.structure
 {
     public interface IServiceLocator
     {
