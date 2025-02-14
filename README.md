@@ -12,13 +12,24 @@ Project where 2 characters using spells turn by turn. Has some client-server sim
   - [Client Main Concepts](#client-main-concepts)
     - [Connection Lifecycle](#connection-lifecycle)
     - [Battle Lifecycle](#battle-lifecycle)
+  - [Server Main Concepts](#server-main-concepts)
+    - [Server Service Locator](#server-service-locator)
 - [Global Utils](#global-utils)
   - [Http Api](#httpapi)
   - [Lifecycle](#lifecycle)
 - [Client](#client)
-- [Folder Structure](#folder-structure)
+  - [Client Folder Structure](#client-folder-structure)
+- [Server](#server)
+  - [Server Folder Structure](#server-folder-structure)
 
 ## Foreward
+
+Zenject used only for client side. </br></br>
+For server side service locator pattern is used. Only one object is Monobehaviour on server - ServerServiceLocator.</br></br>
+For event handling, the client uses Short Polling method.
+That means that the client periodically sends a request for new events.
+In real client server architecture that can be realised through WebSockets. </br></br>
+Also project contain GlobalLifecycle for all sides. Its classes stored in GlobalUtils folder.</br></br>
 Project divided by three folders that has Client, Server and GlobalUtils side. </br></br>
 In this project client-server simulation is used. That means that the client and server communicate through
 class named ClientServerAdapter with one method : Response sendRequest(Request request); </br></br>
@@ -30,21 +41,10 @@ Response class have status parameter that imitates HTTP Response status codes. <
 All of these simplifications are simulation of HTTP Request/Response communication between server and client.
 This behaviour can be described by real HTTP API for unity. </br></br>
 GlobalUtils side folder contains all of these HTTP communication assumptions. </br></br>
-Zenject used only for client side. </br></br>
-For server side service locator pattern is used. </br></br>
-For event handling, the client uses Short Polling method.
-That means that the client periodically sends a request for new events.
-In real client server architecture that can be realised through WebSockets. </br></br>
-Also project contain GlobalLifecycle for all sides. Its classes stored in GlobalUtils folder.
 
 ## Main Concepts
- </br>
-
 ### Global Main Concepts
- </br>
-
 #### Client Server Simulation Communication
- </br>
 At all client server communication can be described by next diagram : </br></br>
 <img src="Documentation/Images/ClientServerCommunication.png" alt="ClientServerCommunication"/>
 
@@ -64,10 +64,8 @@ Loading state invoke scene load for gameplay, while in this state scene was load
 Gameplay state represent gameplay where battle was played. The main client logic of the app can be found here.
 
 ### Client Main Concepts
- </br>
 
 #### Connection Lifecycle
- </br>
 
 Connection Lifecycle controlled by ConnectionLifecycleFsm that initializes in BootstrapInstaller that locates in Zenject Project Context.
 It can be described by following diagram.
@@ -77,7 +75,7 @@ This fsm controls client connection lifecycle. Entry is not a state, but it poin
 - DisConnected state - represent that the client is disconnected from the server. It controls WaitForConnectionUI when leaving, and entering this state.
 Also when ConnectionLifecycleFsm in this state, client tries to connect to server every second. </br></br>
 
-This object living in project context, which means that this object will not be destroyed when scene resets. 
+This object living in project context, which means that this object will not be destroyed when scene resets.</br>
 
 #### Battle Lifecycle
 Battle Lifecycle controlled by BattleLifecycleFsm that initializes in BattleLifecycleInstaller that locates in Zenject SceneContext in Gameplay scene.
@@ -91,6 +89,15 @@ PlayerTurn state contains SwitchPlayerStateHit, it allows states to switch each 
 When one of the turn states reached win condition, it means that game is ended and exit state was setting.</br></br>
 Exit state was hit Reset trigger and scene starts reloading.</br></br>
 This object living in scene, which means that on reloading scene this object will be reloaded too.
+
+### Server Main Concepts
+#### Server Service Locator
+Server side has only one Monobehaviour object - ServerServiceLocator.
+That object stores and configures dependencies for entities on server side.
+Contains its own ServiceLocator object that can register/unregister, get, check for registration services in server side of app. </br></br>
+All registrations for server side entities happens in ServerServiceLocator Configure method. 
+So it means that for new entities on server side programmer should register them here.</br></br>
+Order of registration is important too, cause if ServiceLocator don't have needed dependencies that may cause errors.
 
 ## Global Utils
 This part of app contains global classes that belong to both sides Client/Server or to global initialization for project.
@@ -125,9 +132,9 @@ Also has class GlobalEntryPoint that is entry point for all project.
 ## Client
 That part of document present client part of project and includes all things that client app must have.
 
-## Folder Structure
-Cause app has a global structures, folders Scenes, Resources, Plugins, and other was moved out of there.
-if Client was separate project, this folders would be here.
+### Client Folder Structure
+Cause app has a global structures, folders Scenes, Resources, Plugins, and other was moved out of there.</br>
+In this project Client folders structure looks like this :
 
 - Art 
 - Develop
@@ -148,3 +155,22 @@ Description of some non-obvious folders :
 client connection lifecycle, client event Receiving/Handling.
 - Character - folder that contains classes that describes some information about entities in battle.
 
+## Server
+### Server Folder Structure
+Folder structure for server side decided to create like in Java Prj
+(cause server project can be written on different programming languages and
+author of this project has some Java experience). </br>
+In this project Server folders structure looks like this:
+- src
+  - entities
+  - fsm
+  - mappers
+    - dto
+  - repos
+    - storages
+  - services
+  - structure
+
+Description of some non-obvious folders :
+- structure - contains classes for Server Service Locator, here stores only one Monobehaviour of the server - ServiceLocatorMono
+- storage - contains classes that imitates database storage of server side. These classes were created for simplify project.
