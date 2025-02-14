@@ -32,11 +32,13 @@ namespace magic_heroes.Client.EventConnection
 
         public override void Enter()
         {
+            base.Enter();
             _coroutinesBase.StartCoroutine(TryGetEventsToHandleCoroutine());
         }
 
         public override void Exit()
         {
+            base.Exit();
             _coroutinesBase.StopCoroutine(TryGetEventsToHandleCoroutine());
         }
 

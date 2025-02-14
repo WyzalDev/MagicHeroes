@@ -14,6 +14,7 @@ Project where 2 characters using spells turn by turn. Has some client-server sim
     - [Battle Lifecycle](#battle-lifecycle)
   - [Server Main Concepts](#server-main-concepts)
     - [Server Service Locator](#server-service-locator)
+    - [Message Broker](#message-broker)
 - [Global Utils](#global-utils)
   - [Http Api](#httpapi)
   - [Lifecycle](#lifecycle)
@@ -98,6 +99,16 @@ Contains its own ServiceLocator object that can register/unregister, get, check 
 All registrations for server side entities happens in ServerServiceLocator Configure method. 
 So it means that for new entities on server side programmer should register them here.</br></br>
 Order of registration is important too, cause if ServiceLocator don't have needed dependencies that may cause errors.
+
+#### Message Broker
+Server side has a singleton object that redirect all requests that comes to the server.
+Message Broker redirects requests by request parameter called msgHandlerName, to relevant MessageHandler.
+This mechanism workflow can be founded here on the following [diagram](#client-server-simulation-communication)
+
+#### Event Handling
+Servers EventCheckMessageHandler has event queue.
+Events can be added through static void AddEvent(string eventName) method.
+> In real app this method should not be achieved by clients. Only server must have access to it.
 
 ## Global Utils
 This part of app contains global classes that belong to both sides Client/Server or to global initialization for project.

@@ -10,8 +10,6 @@ namespace magic_heroes.Client.Presenter
 {
     public class EndTurnPresenter
     {
-        private const string MessageHandlerName = "EndTurn";
-
         public void SendEndTurnRequest(int spellOrder, UserDto user, long battleInGameId)
         {
             var fields = new Dictionary<string, string>
@@ -23,12 +21,12 @@ namespace magic_heroes.Client.Presenter
 
             var request = new Request()
             {
-                name = MessageHandlerName,
+                msgHandlerName = MessageHandlerNames.EndTurnMessageHandler,
                 fields = fields
             };
             
             var response = ClientServerAdapter.Instance.SendRequest(request);
-            Debug.Log($"Response came back from {MessageHandlerName}, status = {response.status}, Fields = {response.fields.ToDebugString()}");
+            Debug.Log($"Response came back from {MessageHandlerNames.EndTurnMessageHandler}, status = {response.status}, Fields = {response.fields.ToDebugString()}");
             
             if (response.status == 200)
             {
