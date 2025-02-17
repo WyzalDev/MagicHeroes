@@ -15,6 +15,9 @@ Project where 2 characters using spells turn by turn. Has some client-server sim
   - [Server Main Concepts](#server-main-concepts)
     - [Server Service Locator](#server-service-locator)
     - [Message Broker](#message-broker)
+    - [Event Handling](#event-handling)
+    - [Server database simulation](#server-database-simulation)
+      - [Entities Architecture](#entities-architecture)
 - [Global Utils](#global-utils)
   - [Http Api](#httpapi)
   - [Lifecycle](#lifecycle)
@@ -109,6 +112,12 @@ This mechanism workflow can be founded here on the following [diagram](#client-s
 Servers EventCheckMessageHandler has event queue.
 Events can be added through static void AddEvent(string eventName) method.
 > In real app this method should not be achieved by clients. Only server must have access to it.
+
+#### Server database simulation
+Server doesn't use any database its only static initialized class storage that contains all db information.
+##### Entities architecture
+DB simulation has some entities that used on server side. Entities architecture can be described by this table diagram:
+<img src="Documentation/Images/DataBaseDiagram.png" alt="DataBaseDiagram"/>
 
 ## Global Utils
 This part of app contains global classes that belong to both sides Client/Server or to global initialization for project.
