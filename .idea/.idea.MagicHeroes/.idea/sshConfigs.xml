@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig connectionConfig="{&quot;hostKeyVerifier&quot;:{&quot;stringHostKeyChecking&quot;:&quot;ASK&quot;}}" host="github.com" id="e8bb3847-e595-4803-b7f5-dfcea793b859" keyPath="$USER_HOME$/.ssh/id_rsa.ppk" port="22" nameFormat="DESCRIPTIVE" username="git" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>
