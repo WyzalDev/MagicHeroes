@@ -4,11 +4,7 @@
     {
         public string Id { get; set; }
         public string InGameId { get; set; }
-        public Player FirstPlayer { get; set; }
-        public Player SecondPlayer { get; set; }
-
         public CharacterCurrentInfo FirstCharacterCurrentInfo { get; set; }
-
         public CharacterCurrentInfo SecondCharacterCurrentInfo { get; set; }
         public BattleStatus Status { get; set; }
     }
