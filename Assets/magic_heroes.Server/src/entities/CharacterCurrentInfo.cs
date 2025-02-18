@@ -13,5 +13,7 @@ namespace magic_heroes.Server.entities
         public int HealthPoints { get; set; }
 
         public List<ActiveEffect> ActiveEffects { get; set; }
+        
+        public List<SpellCurrentCooldown> spellCurrentCooldowns { get; set; }
     }
 }
