@@ -11,8 +11,9 @@
 
     public enum BattleStatus
     {
-        WaitForStart = 0,
-        InProcess = 1,
-        Passed = 2
+        None = 0,
+        WaitForStart = 1,
+        InProcess = 2,
+        Passed = 3
     }
 }
