@@ -1,5 +1,6 @@
 ﻿using System;
 using magic_heroes.Server.connection.handlers;
+using magic_heroes.Server.repos.impl;
 using UnityEngine;
 
 namespace magic_heroes.Server.structure
@@ -20,21 +21,37 @@ namespace magic_heroes.Server.structure
             Debug.Log("SERVER_INFO: ServiceLocatorMono Awake");
         }
 
-        //Register all server services and entities here 
-        private void RegisterAllDependencies()
-        {
-            _serviceLocator.Register<EventCheckMessageHandler>(new EventCheckMessageHandler());
-            _serviceLocator.Register<ConnectionMessageHandler>(new ConnectionMessageHandler());
-            _serviceLocator.Register<ResetMessageHandler>(new ResetMessageHandler());
-            _serviceLocator.Register<EndTurnMessageHandler>(new EndTurnMessageHandler());
-            //example locator.Register<UtilityService>(new UtilityService(utilityServiceParams));
-            Debug.Log("SERVER_INFO: ServiceLocatorMono RegisterAllDependencies complete");
-        }
-
         public bool TryGetService<T>(out object service)
         {
             service = _serviceLocator.Get<T>();
             return service != null;
         }
+
+        //Register all server services and entities here 
+        private void RegisterAllDependencies()
+        {
+            RegisterMessageHandlers();
+            RegisterRepos();
+            //example locator.Register<UtilityService>(new UtilityService(utilityServiceParams));
+            Debug.Log("SERVER_INFO: ServiceLocatorMono RegisterAllDependencies complete");
+        }
+
+
+        #region REGISTRATIONS
+
+        private void RegisterMessageHandlers()
+        {
+            _serviceLocator.Register<EventCheckMessageHandler>(new EventCheckMessageHandler());
+            _serviceLocator.Register<ConnectionMessageHandler>(new ConnectionMessageHandler());
+            _serviceLocator.Register<ResetMessageHandler>(new ResetMessageHandler());
+            _serviceLocator.Register<EndTurnMessageHandler>(new EndTurnMessageHandler());
+        }
+
+        private void RegisterRepos()
+        {
+            _serviceLocator.Register<BattleRepository>(new BattleRepository());
+        }
+
+        #endregion
     }
 }
